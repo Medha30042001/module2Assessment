@@ -22,6 +22,7 @@ form{
 nav{
     background-color: rgb(254, 177, 148);
     padding: 10px;
+    gap: 20px;
 }
 
 button{

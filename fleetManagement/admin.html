@@ -8,17 +8,24 @@
 </head>
 <body>
     <nav>
-        <button id="catBtn">Category Filter</button>
-        <button id="availBtn">Availability Filter</button>
+        <label for="">Category Filter</label>
+
+        <select name="catMenu" id="category">
+                <option value="">Select</option>
+                <option value="Auto">Auto</option>
+                <option value="Car">Car</option>
+                <option value="Truck">Truck</option>
+                <option value="Bus">Bus</option>
+            </select>
+
+        <label for="">Availability Filter</label>
+        <select name="avail" id="avail">
+                <option value="">Select</option>
+                <option value="Available">Available</option>
+                <option value="Unavailable">Unavailable</option>
+            </select>
         <button id="clearBtn">Clear Filter</button>
 
-        <div id="categoryMenu" style="display: none;">
-            <button>All</button>
-            <button>Auto</button>
-            <button>Car</button>
-            <button>Truck</button>
-            <button>Bus</button>
-        </div>
         <div id="availMenu" style="display: none;">
             <button>All</button>
             <button>Available</button>
@@ -29,9 +36,9 @@
     <div class="sidebar">
         <form id="fleetForm">
             <label for="">Vehicle Registration Number</label>
-            <input type="text" id="regno">
+            <input type="text" name="regno" id>
             <label for="">Category</label>
-            <select name="category" id="category">
+            <select name="category" name="category">
                 <option value="">Select</option>
                 <option value="Auto">Auto</option>
                 <option value="Car">Car</option>
@@ -39,9 +46,10 @@
                 <option value="Bus">Bus</option>
             </select>
             <label for="">Driver Name</label>
-            <input type="text" id="dname">
+            <input type="text" name="dname">
             <label for="">Availability</label>
-            <select name="avail" id="avail">
+            <select name="avail" name="avail">
+                <option value="">Select</option>
                 <option value="Available">Available</option>
                 <option value="Unavailable">Unavailable</option>
             </select>
@@ -107,12 +115,12 @@
                 }
             });
         }
-    div.querySelectorAll(".availBtn").addEventListener("click", (btn) =>{
+    document.querySelectorAll(".availBtn").addEventListener("click", (btn) =>{
         fleet.available = !fleet.available;
         div.querySelector(".status").textContent = fleet.available ? "Available" : "Not Available";
     })
 
-    div.querySelector(".updateBtn").addEventListener("click", () =>{
+    document.querySelector(".updateBtn").addEventListener("click", () =>{
         let newDriver = prompt("Enter new Driver Name");
 
         if(newDriver!==null && newDriver.trim()!==""){
@@ -120,13 +128,8 @@
         }
     })
 
-    document.getElementById("catBtn").onclick = function(){
-        let categoryMenu = document.getElementById("categoryMenu");
-        categoryMenu.style.display = categoryMenu.style.display==='none'? 'block' : 'none';
-    }
-    document.getElementById("availBtn").onclick = function(){
-        let availMenu = document.getElementById("availMenu");
-        availMenu.style.display = availMenu.style.display==='none'? 'block' : 'none';
+    document.getElementById("clearBtn").onclick = function(){
+        renderFleet(fleet);
     }
 </script>
 
